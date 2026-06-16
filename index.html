@@ -11,18 +11,11 @@
             --text-color: #333333;
             --primary: #0b1f3b; 
             --accent: #d32f2f;  
+            --foreigner-color: #0288d1;
             
             /* Colores de los Partidos */
-            --color-fcc: #0a2540;      
             --color-adl: #1a365d;      
             --color-frenova: #7fff00;  
-            --color-peronista: #29b6f6;
-            --color-convergencia: #ba68c8; 
-            --color-roja: #d32f2f;     
-            --color-alianza: #455a64;  
-            --color-liberal: #b7a200;   
-            --color-up: #ff9800;       
-            --color-fp: #e65100;       
             --color-blanco: #9e9e9e;   
         }
 
@@ -60,7 +53,7 @@
             padding: 0 15px;
         }
 
-        /* Ficha de Datos Poblacionales */
+        /* Ficha de Datos Consolidados (Tablas de Datos) */
         .poblacion-card {
             background: var(--card-bg);
             border-radius: 8px;
@@ -74,13 +67,15 @@
             font-size: 1rem;
             font-weight: bold;
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             text-transform: uppercase;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 5px;
         }
 
         .poblacion-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 12px;
         }
 
@@ -227,7 +222,6 @@
 
         .bg-adl { background-color: var(--color-adl); }
         .bg-frenova { background-color: var(--color-frenova); }
-        .bg-blanco { background-color: var(--color-blanco); }
 
         /* Estilos de Gráficos de Pastel (SVG) */
         .chart-container {
@@ -302,15 +296,20 @@
         <!-- ==================================================== -->
         <div class="results-title">1. Resumen de Escrutinio Territorial (Nacional)</div>
         
+        <!-- Tabla Unificada Nacional -->
         <div class="poblacion-card">
-            <div class="poblacion-title">Datos Demográficos Nacionales</div>
+            <div class="poblacion-title">Consolidado de Datos Nacionales</div>
             <div class="poblacion-grid">
                 <div class="poblacion-item">Población Total: <span>32,790,071</span></div>
-                <div class="poblacion-item">Hab. Registrados: <span>24,100,000</span></div>
-                <div class="poblacion-item">Mesas Territoriales: <span>96,400</span></div>
+                <div class="poblacion-item">Padrón Electoral Nacional: <span>24,100,000</span></div>
+                <div class="poblacion-item">Mesas Territoriales Totales: <span>96,400</span></div>
+                <div class="poblacion-item">Porcentaje del Padrón Global: <span>95.59%</span></div>
+                <div class="poblacion-item">Porcentaje de Mesas Global: <span>95.60%</span></div>
+                <div class="poblacion-item">Padrón Electoral Total Global: <span>25,210,000</span></div>
             </div>
         </div>
 
+        <!-- Avance Nacional -->
         <div class="status-card">
             <h3>AVANCE DE ESCRUTINIO NACIONAL</h3>
             <div class="status-grid">
@@ -333,6 +332,7 @@
             </div>
         </div>
 
+        <!-- Participación Nacional -->
         <div class="participacion-card">
             <div class="participacion-info">
                 <div>PARTICIPACIÓN CIUDADANA TERRITORIAL</div>
@@ -343,10 +343,9 @@
             </div>
         </div>
 
-        <!-- TARJETAS DE CANDIDATOS SEGUNDA VUELTA (NACIONAL) -->
+        <!-- Resultados Tarjetas Nacionales -->
         <div class="results-title">Resultados Presidenciales Oficiales (Nacional)</div>
 
-        <!-- Candidato 1: ADL -->
         <div class="candidate-card">
             <div class="candidate-info">
                 <div>
@@ -363,7 +362,6 @@
             </div>
         </div>
 
-        <!-- Candidato 2: FRENOVA -->
         <div class="candidate-card">
             <div class="candidate-info">
                 <div>
@@ -382,59 +380,98 @@
 
 
         <!-- ==================================================== -->
-        <!-- SECCIÓN 2: COMPARATIVA TERRITORIO TOTAL VS EXTERIOR -->
+        <!-- SECCIÓN 2: INTERFAZ DE VOTO EXTRANJERO               -->
         <!-- ==================================================== -->
         <hr class="seccion-divider">
-        <div class="results-title">2. Distribución General del Territorio Absoluto</div>
-        
-        <div class="poblacion-card" style="border-left-color: #0288d1; background-color: #f8fafc;">
-            <div class="poblacion-title" style="color: #0288d1;">Análisis de Padrón Electoral Global</div>
-            <p style="font-size: 0.88rem; color: #555; margin: 0 0 12px 0; text-align: justify;">
-                A continuación se contrasta la magnitud y el balance logístico establecido entre el electorado residente en las provincias nacionales frente a los núcleos ciudadanos habilitados en el exterior.
-            </p>
+        <div class="results-title" style="color: var(--foreigner-color); border-left-color: var(--foreigner-color);">2. Interfaz del Voto Extranjero</div>
+
+        <!-- Tabla Unificada Extranjero (Exactamente igual formato que la de arriba) -->
+        <div class="poblacion-card" style="border-left-color: var(--foreigner-color);">
+            <div class="poblacion-title" style="color: var(--foreigner-color);">Consolidado de Datos Internacionales</div>
             <div class="poblacion-grid">
-                <div class="poblacion-item">Padrón Nacional Interno: <span>24,100,000 (95.59%)</span></div>
-                <div class="poblacion-item">Padrón en el Exterior: <span>1,110,000 (4.41%)</span></div>
-                <div class="poblacion-item">Mesas Internas: <span>96,400 (95.60%)</span></div>
-                <div class="poblacion-item">Mesas en el Exterior: <span>4,440 (4.40%)</span></div>
-                <div class="poblacion-item"><strong>Padrón Electoral Total:</strong> <span><strong>25,210,000 hab.</strong></span></div>
-                <div class="poblacion-item"><strong>Infraestructura Total:</strong> <span><strong>100,840 mesas</strong></span></div>
+                <div class="poblacion-item">Población Exterior Total: <span>3,500,000</span></div>
+                <div class="poblacion-item">Padrón en el Exterior: <span>1,110,000</span></div>
+                <div class="poblacion-item">Mesas en el Exterior: <span>4,440</span></div>
+                <div class="poblacion-item">Porcentaje del Padrón Global: <span>4.41%</span></div>
+                <div class="poblacion-item">Porcentaje de Mesas Global: <span>4.40%</span></div>
+                <div class="poblacion-item">Infraestructura Total Global: <span>100,840 mesas</span></div>
+            </div>
+        </div>
+
+        <!-- Avance Extranjero (Mismo formato estético con color azul identificativo) -->
+        <div class="status-card" style="border-top-color: var(--foreigner-color);">
+            <h3 style="color: var(--foreigner-color);">AVANCE DE ESCRUTINIO INTERNACIONAL</h3>
+            <div class="status-grid">
+                <div class="status-item">
+                    <div class="status-number">100.00%</div>
+                    <div style="font-size: 0.8rem; color: #666;">Actas Procesadas</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-number">695,193</div>
+                    <div style="font-size: 0.8rem; color: #666;">Votos Emitidos</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-number">4,440</div>
+                    <div style="font-size: 0.8rem; color: #666;">Mesas Procesadas</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-number" style="color: #2e7d32; font-weight: bold;">CONCLUIDO</div>
+                    <div style="font-size: 0.8rem; color: #666;">Estado</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Participación Extranjero -->
+        <div class="participacion-card" style="border-left: 4px solid var(--foreigner-color);">
+            <div class="participacion-info">
+                <div style="color: var(--foreigner-color);">PORCENTAJE DE PARTICIPACIÓN EN EL EXTRANJERO</div>
+                <div style="color: var(--foreigner-color);">62.63%</div>
+            </div>
+            <div class="progress-bar-square-bg">
+                <div class="progress-bar-square-fill" style="width: 62.63%; background-color: var(--foreigner-color);"></div>
+            </div>
+        </div>
+
+        <!-- Resultados Tarjetas Extranjero -->
+        <div class="results-title" style="color: var(--foreigner-color); border-left-color: var(--foreigner-color);">Resultados Presidenciales Oficiales (Extranjero)</div>
+
+        <div class="candidate-card">
+            <div class="candidate-info">
+                <div>
+                    <div class="party-name adl-text">ACCIÓN POR LA DEMOCRACIA Y LIBERTAD (ADL)</div>
+                    <div class="candidate-name">Sebastián Piñera / Isabel Ayuso</div>
+                </div>
+                <div class="candidate-votes">
+                    <div class="candidate-percentage adl-text">68.57%</div>
+                    <div style="font-size: 0.8rem; color: #666;">476,693 Votos</div>
+                </div>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill bg-adl" style="width: 68.57%;"></div>
+            </div>
+        </div>
+
+        <div class="candidate-card">
+            <div class="candidate-info">
+                <div>
+                    <div class="party-name frenova-text">FRENOVA</div>
+                    <div class="candidate-name">Carmen Polo / Sanae Yamamoto</div>
+                </div>
+                <div class="candidate-votes">
+                    <div class="candidate-percentage frenova-text">31.43%</div>
+                    <div style="font-size: 0.8rem; color: #666;">218,500 Votos</div>
+                </div>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill bg-frenova" style="width: 31.43%;"></div>
             </div>
         </div>
 
 
         <!-- ==================================================== -->
-        <!-- SECCIÓN 3: INTERFAZ DE VOTO EXTRANJERO Y GRÁFICOS    -->
+        <!-- SECCIÓN 3: GRÁFICOS DE REPARTICIÓN                   -->
         <!-- ==================================================== -->
         <hr class="seccion-divider">
-        <div class="results-title" style="color: #0288d1; border-left-color: #0288d1;">3. Interfaz del Voto Extranjero</div>
-
-        <!-- Bloque Especial de Texto con Datos Completos del Extranjero -->
-        <div class="poblacion-card" style="border-left: 4px solid #0288d1; background-color: #f4f9fd; padding: 22px; margin-bottom: 25px;">
-            <div style="font-size: 1.1rem; font-weight: bold; color: #0b1f3b; margin-bottom: 15px; border-bottom: 2px solid #0288d1; padding-bottom: 5px; text-transform: uppercase;">
-                SISTEMA DE CÓMPUTO ELECTORAL (REPORTE EXTRANJERO SEGUNDA VUELTA)
-            </div>
-            
-            <div style="font-size: 0.88rem; line-height: 1.6; color: #333;">
-                <strong style="color: #0288d1;">📊 DATOS DE POBLACIÓN ELECTORAL (EXTRANJERO)</strong><br>
-                • Población Total en el Exterior: 3,500,000<br>
-                • Hab. Ext. Registrados (Padrón): 1,110,000<br>
-                • Mesas en el Extranjero: 4,440<br><br>
-
-                <strong style="color: #0288d1;">📈 AVANCE DEL ESCRUTINIO INTERNACIONAL (100% ABSOLUTO)</strong><br>
-                • Actas Procesadas en el Exterior: 100.00%<br>
-                • Votantes Actuales (Exterior): 695,193<br>
-                • Mesas Procesadas: 4,440<br>
-                • Estado del Proceso: <span style="color: #2e7d32; font-weight: bold;">CONCLUIDO</span><br>
-                • PARTICIPACIÓN CIUDADANA EN EL EXTERIOR: <strong>62.63%</strong><br><br>
-
-                <strong style="color: #0b1f3b;">🗳️ RESULTADOS PRESIDENCIALES EN EL EXTRANJERO (BALOTAJE)</strong><br>
-                • <strong>ACCIÓN POR LA DEMOCRACIA Y LIBERTAD (ADL):</strong> <strong>68.57%</strong> | 476,693 Votos<br>
-                • <strong>FRENOVA:</strong> 31.43% | 218,500 Votos
-            </div>
-        </div>
-
-        <!-- GRÁFICOS DE PASTEL (CIRCULARES) SEGUNDA VUELTA -->
         <h3 style="color: #0b1f3b; font-size: 1.1rem; margin-top: 30px; text-transform: uppercase;">📊 Gráficos de Repartición (Segunda Vuelta)</h3>
         
         <div class="chart-container">
@@ -443,9 +480,7 @@
             <div class="chart-box">
                 <h4>Presidencia (Total Nacional)</h4>
                 <svg class="pie-chart" width="160" height="160" viewBox="0 0 32 32">
-                    <!-- ADL: 52.40% -> stroke-dasharray="52.40 100" stroke-dashoffset="0" -->
                     <circle r="16" cx="16" cy="16" fill="transparent" stroke="#1a365d" stroke-width="32" stroke-dasharray="52.40 100" stroke-dashoffset="0" />
-                    <!-- FRENOVA: 47.60% -> stroke-dasharray="47.60 100" stroke-dashoffset="-52.40" -->
                     <circle r="16" cx="16" cy="16" fill="transparent" stroke="#7fff00" stroke-width="32" stroke-dasharray="47.60 100" stroke-dashoffset="-52.40" />
                 </svg>
                 <div class="legend-box">
@@ -458,9 +493,7 @@
             <div class="chart-box">
                 <h4>Presidencia (Voto Exterior)</h4>
                 <svg class="pie-chart" width="160" height="160" viewBox="0 0 32 32">
-                    <!-- ADL: 68.57% -> stroke-dasharray="68.57 100" stroke-dashoffset="0" -->
                     <circle r="16" cx="16" cy="16" fill="transparent" stroke="#1a365d" stroke-width="32" stroke-dasharray="68.57 100" stroke-dashoffset="0" />
-                    <!-- FRENOVA: 31.43% -> stroke-dasharray="31.43 100" stroke-dashoffset="-68.57" -->
                     <circle r="16" cx="16" cy="16" fill="transparent" stroke="#7fff00" stroke-width="32" stroke-dasharray="31.43 100" stroke-dashoffset="-68.57" />
                 </svg>
                 <div class="legend-box">
@@ -469,17 +502,6 @@
                 </div>
             </div>
 
-        </div>
-
-        <!-- Tarjeta de Participación Cuadrada (Visual Exterior) -->
-        <div class="participacion-card" style="border-left: 4px solid #0288d1;">
-            <div class="participacion-info">
-                <div style="color: #0288d1;">PORCENTAJE DE PARTICIPACIÓN EN EL EXTRANJERO</div>
-                <div style="color: #0288d1;">62.63%</div>
-            </div>
-            <div class="progress-bar-square-bg">
-                <div class="progress-bar-square-fill" style="width: 62.63%; background-color: #0288d1;"></div>
-            </div>
         </div>
 
     </div>
