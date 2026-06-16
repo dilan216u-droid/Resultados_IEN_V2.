@@ -53,7 +53,7 @@
             padding: 0 15px;
         }
 
-        /* Ficha de Datos Consolidados (Tablas de Datos) */
+        /* Ficha de Datos Consolidados Tablas de Datos */
         .poblacion-card {
             background: var(--card-bg);
             border-radius: 8px;
@@ -223,7 +223,7 @@
         .bg-adl { background-color: var(--color-adl); }
         .bg-frenova { background-color: var(--color-frenova); }
 
-        /* Estilos de Gráficos de Pastel (SVG) */
+        /* Estilos de Gráficos de Pastel SVG */
         .chart-container {
             display: flex;
             flex-wrap: wrap;
@@ -294,9 +294,9 @@
         <!-- ==================================================== -->
         <!-- SECCIÓN 1: DATOS NACIONALES                          -->
         <!-- ==================================================== -->
-        <div class="results-title">1. Resumen de Escrutinio Territorial (Nacional)</div>
+        <div class="results-title">1. Resumen de Escrutinio Territorial Nacional</div>
         
-        <!-- Tabla Unificada Nacional -->
+        <!-- Tabla Unificada Nacional (Mantiene sus datos poblacionales fijos) -->
         <div class="poblacion-card">
             <div class="poblacion-title">Consolidado de Datos Nacionales</div>
             <div class="poblacion-grid">
@@ -309,24 +309,24 @@
             </div>
         </div>
 
-        <!-- Avance Nacional -->
+        <!-- Avance Nacional (A cero y En Curso) -->
         <div class="status-card">
             <h3>AVANCE DE ESCRUTINIO NACIONAL</h3>
             <div class="status-grid">
                 <div class="status-item">
-                    <div class="status-number">100.00%</div>
+                    <div class="status-number">0.00%</div>
                     <div style="font-size: 0.8rem; color: #666;">Actas Procesadas</div>
                 </div>
                 <div class="status-item">
-                    <div class="status-number">15,460,150</div>
+                    <div class="status-number">0</div>
                     <div style="font-size: 0.8rem; color: #666;">Votos Emitidos</div>
                 </div>
                 <div class="status-item">
-                    <div class="status-number">96,400</div>
+                    <div class="status-number">0</div>
                     <div style="font-size: 0.8rem; color: #666;">Mesas Procesadas</div>
                 </div>
                 <div class="status-item">
-                    <div class="status-number" style="color: #2e7d32; font-weight: bold;">CONCLUIDO</div>
+                    <div class="status-number" style="color: #ff9800; font-weight: bold;">EN CURSO</div>
                     <div style="font-size: 0.8rem; color: #666;">Estado</div>
                 </div>
             </div>
@@ -336,29 +336,29 @@
         <div class="participacion-card">
             <div class="participacion-info">
                 <div>PARTICIPACIÓN CIUDADANA TERRITORIAL</div>
-                <div style="color: var(--accent);">64.15%</div>
+                <div style="color: var(--accent);">0.00%</div>
             </div>
             <div class="progress-bar-square-bg">
-                <div class="progress-bar-square-fill" style="width: 64.15%;"></div>
+                <div class="progress-bar-square-fill" style="width: 0.00%;"></div>
             </div>
         </div>
 
         <!-- Resultados Tarjetas Nacionales -->
-        <div class="results-title">Resultados Presidenciales Oficiales (Nacional)</div>
+        <div class="results-title">Resultados Presidenciales Oficiales Nacional</div>
 
         <div class="candidate-card">
             <div class="candidate-info">
                 <div>
-                    <div class="party-name adl-text">ACCIÓN POR LA DEMOCRACIA Y LIBERTAD (ADL)</div>
+                    <div class="party-name adl-text">ACCIÓN POR LA DEMOCRACIA Y LIBERTAD ADL</div>
                     <div class="candidate-name">Sebastián Piñera / Isabel Ayuso</div>
                 </div>
                 <div class="candidate-votes">
-                    <div class="candidate-percentage adl-text">52.40%</div>
-                    <div style="font-size: 0.8rem; color: #666;">8,101,118 Votos</div>
+                    <div class="candidate-percentage adl-text">0.00%</div>
+                    <div style="font-size: 0.8rem; color: #666;">0 Votos</div>
                 </div>
             </div>
             <div class="progress-bar-bg">
-                <div class="progress-bar-fill bg-adl" style="width: 52.40%;"></div>
+                <div class="progress-bar-fill bg-adl" style="width: 0.00%;"></div>
             </div>
         </div>
 
@@ -369,12 +369,12 @@
                     <div class="candidate-name">Carmen Polo / Sanae Yamamoto</div>
                 </div>
                 <div class="candidate-votes">
-                    <div class="candidate-percentage frenova-text">47.60%</div>
-                    <div style="font-size: 0.8rem; color: #666;">7,359,032 Votos</div>
+                    <div class="candidate-percentage frenova-text">0.00%</div>
+                    <div style="font-size: 0.8rem; color: #666;">0 Votos</div>
                 </div>
             </div>
             <div class="progress-bar-bg">
-                <div class="progress-bar-fill bg-frenova" style="width: 47.60%;"></div>
+                <div class="progress-bar-fill bg-frenova" style="width: 0.00%;"></div>
             </div>
         </div>
 
@@ -385,7 +385,7 @@
         <hr class="seccion-divider">
         <div class="results-title" style="color: var(--foreigner-color); border-left-color: var(--foreigner-color);">2. Interfaz del Voto Extranjero</div>
 
-        <!-- Tabla Unificada Extranjero (Exactamente igual formato que la de arriba) -->
+        <!-- Tabla Unificada Extranjero (Mantiene sus datos poblacionales fijos) -->
         <div class="poblacion-card" style="border-left-color: var(--foreigner-color);">
             <div class="poblacion-title" style="color: var(--foreigner-color);">Consolidado de Datos Internacionales</div>
             <div class="poblacion-grid">
@@ -398,24 +398,24 @@
             </div>
         </div>
 
-        <!-- Avance Extranjero (Mismo formato estético con color azul identificativo) -->
+        <!-- Avance Extranjero (A cero y En Curso) -->
         <div class="status-card" style="border-top-color: var(--foreigner-color);">
             <h3 style="color: var(--foreigner-color);">AVANCE DE ESCRUTINIO INTERNACIONAL</h3>
             <div class="status-grid">
                 <div class="status-item">
-                    <div class="status-number">100.00%</div>
+                    <div class="status-number">0.00%</div>
                     <div style="font-size: 0.8rem; color: #666;">Actas Procesadas</div>
                 </div>
                 <div class="status-item">
-                    <div class="status-number">695,193</div>
+                    <div class="status-number">0</div>
                     <div style="font-size: 0.8rem; color: #666;">Votos Emitidos</div>
                 </div>
                 <div class="status-item">
-                    <div class="status-number">4,440</div>
+                    <div class="status-number">0</div>
                     <div style="font-size: 0.8rem; color: #666;">Mesas Procesadas</div>
                 </div>
                 <div class="status-item">
-                    <div class="status-number" style="color: #2e7d32; font-weight: bold;">CONCLUIDO</div>
+                    <div class="status-number" style="color: #ff9800; font-weight: bold;">EN CURSO</div>
                     <div style="font-size: 0.8rem; color: #666;">Estado</div>
                 </div>
             </div>
@@ -425,29 +425,29 @@
         <div class="participacion-card" style="border-left: 4px solid var(--foreigner-color);">
             <div class="participacion-info">
                 <div style="color: var(--foreigner-color);">PORCENTAJE DE PARTICIPACIÓN EN EL EXTRANJERO</div>
-                <div style="color: var(--foreigner-color);">62.63%</div>
+                <div style="color: var(--foreigner-color);">0.00%</div>
             </div>
             <div class="progress-bar-square-bg">
-                <div class="progress-bar-square-fill" style="width: 62.63%; background-color: var(--foreigner-color);"></div>
+                <div class="progress-bar-square-fill" style="width: 0.00%; background-color: var(--foreigner-color);"></div>
             </div>
         </div>
 
         <!-- Resultados Tarjetas Extranjero -->
-        <div class="results-title" style="color: var(--foreigner-color); border-left-color: var(--foreigner-color);">Resultados Presidenciales Oficiales (Extranjero)</div>
+        <div class="results-title" style="color: var(--foreigner-color); border-left-color: var(--foreigner-color);">Resultados Presidenciales Oficiales Extranjero</div>
 
         <div class="candidate-card">
             <div class="candidate-info">
                 <div>
-                    <div class="party-name adl-text">ACCIÓN POR LA DEMOCRACIA Y LIBERTAD (ADL)</div>
+                    <div class="party-name adl-text">ACCIÓN POR LA DEMOCRACIA Y LIBERTAD ADL</div>
                     <div class="candidate-name">Sebastián Piñera / Isabel Ayuso</div>
                 </div>
                 <div class="candidate-votes">
-                    <div class="candidate-percentage adl-text">68.57%</div>
-                    <div style="font-size: 0.8rem; color: #666;">476,693 Votos</div>
+                    <div class="candidate-percentage adl-text">0.00%</div>
+                    <div style="font-size: 0.8rem; color: #666;">0 Votos</div>
                 </div>
             </div>
             <div class="progress-bar-bg">
-                <div class="progress-bar-fill bg-adl" style="width: 68.57%;"></div>
+                <div class="progress-bar-fill bg-adl" style="width: 0.00%;"></div>
             </div>
         </div>
 
@@ -458,12 +458,12 @@
                     <div class="candidate-name">Carmen Polo / Sanae Yamamoto</div>
                 </div>
                 <div class="candidate-votes">
-                    <div class="candidate-percentage frenova-text">31.43%</div>
-                    <div style="font-size: 0.8rem; color: #666;">218,500 Votos</div>
+                    <div class="candidate-percentage frenova-text">0.00%</div>
+                    <div style="font-size: 0.8rem; color: #666;">0 Votos</div>
                 </div>
             </div>
             <div class="progress-bar-bg">
-                <div class="progress-bar-fill bg-frenova" style="width: 31.43%;"></div>
+                <div class="progress-bar-fill bg-frenova" style="width: 0.00%;"></div>
             </div>
         </div>
 
@@ -472,33 +472,31 @@
         <!-- SECCIÓN 3: GRÁFICOS DE REPARTICIÓN                   -->
         <!-- ==================================================== -->
         <hr class="seccion-divider">
-        <h3 style="color: #0b1f3b; font-size: 1.1rem; margin-top: 30px; text-transform: uppercase;">📊 Gráficos de Repartición (Segunda Vuelta)</h3>
+        <h3 style="color: #0b1f3b; font-size: 1.1rem; margin-top: 30px; text-transform: uppercase;">Gráficos de Repartición Segunda Vuelta</h3>
         
         <div class="chart-container">
             
             <!-- Pastel Presidencial Nacional -->
             <div class="chart-box">
-                <h4>Presidencia (Total Nacional)</h4>
+                <h4>Presidencia Total Nacional</h4>
                 <svg class="pie-chart" width="160" height="160" viewBox="0 0 32 32">
-                    <circle r="16" cx="16" cy="16" fill="transparent" stroke="#1a365d" stroke-width="32" stroke-dasharray="52.40 100" stroke-dashoffset="0" />
-                    <circle r="16" cx="16" cy="16" fill="transparent" stroke="#7fff00" stroke-width="32" stroke-dasharray="47.60 100" stroke-dashoffset="-52.40" />
+                    <circle r="16" cx="16" cy="16" fill="transparent" stroke="#eaeaea" stroke-width="32" stroke-dasharray="100 100" stroke-dashoffset="0" />
                 </svg>
                 <div class="legend-box">
-                    <div class="legend-item"><span class="legend-color" style="background: #1a365d;"></span><strong>ADL:</strong> 52.40%</div>
-                    <div class="legend-item"><span class="legend-color" style="background: #7fff00; border:1px solid #aaa;"></span><strong>FRENOVA:</strong> 47.60%</div>
+                    <div class="legend-item"><span class="legend-color" style="background: #1a365d;"></span><strong>ADL:</strong> 0.00%</div>
+                    <div class="legend-item"><span class="legend-color" style="background: #7fff00; border:1px solid #aaa;"></span><strong>FRENOVA:</strong> 0.00%</div>
                 </div>
             </div>
 
             <!-- Pastel Presidencial Extranjero -->
             <div class="chart-box">
-                <h4>Presidencia (Voto Exterior)</h4>
+                <h4>Presidencia Voto Exterior</h4>
                 <svg class="pie-chart" width="160" height="160" viewBox="0 0 32 32">
-                    <circle r="16" cx="16" cy="16" fill="transparent" stroke="#1a365d" stroke-width="32" stroke-dasharray="68.57 100" stroke-dashoffset="0" />
-                    <circle r="16" cx="16" cy="16" fill="transparent" stroke="#7fff00" stroke-width="32" stroke-dasharray="31.43 100" stroke-dashoffset="-68.57" />
+                    <circle r="16" cx="16" cy="16" fill="transparent" stroke="#eaeaea" stroke-width="32" stroke-dasharray="100 100" stroke-dashoffset="0" />
                 </svg>
                 <div class="legend-box">
-                    <div class="legend-item"><span class="legend-color" style="background: #1a365d;"></span><strong>ADL:</strong> 68.57%</div>
-                    <div class="legend-item"><span class="legend-color" style="background: #7fff00; border:1px solid #aaa;"></span><strong>FRENOVA:</strong> 31.43%</div>
+                    <div class="legend-item"><span class="legend-color" style="background: #1a365d;"></span><strong>ADL:</strong> 0.00%</div>
+                    <div class="legend-item"><span class="legend-color" style="background: #7fff00; border:1px solid #aaa;"></span><strong>FRENOVA:</strong> 0.00%</div>
                 </div>
             </div>
 
@@ -511,5 +509,4 @@
     </footer>
 
 </body>
-    </html>
-    
+</html>
