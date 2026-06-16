@@ -1,4 +1,4 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -12,11 +12,11 @@
             --text-white: #ffffff;
             --text-muted: #8da9c4;
             --accent-green: #00e676;  /* Éxito / Concluido */
+            --accent-orange: #f59e0b; /* Alerta / Pendiente */
             
             /* Colores Oficiales de los Finalistas */
             --color-adl: #2563eb;      /* Azul Eléctrico ADL */
             --color-frenova: #76ff03;  /* Verde Limón FRENOVA */
-            --color-otros: #64748b;    /* Gris */
         }
 
         body {
@@ -124,6 +124,7 @@
             border: 1px solid #222d4f;
             padding: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
         }
 
         .panel-header {
@@ -172,7 +173,7 @@
         .balance-container {
             position: relative;
             margin: 15px 0 35px 0;
-            padding-top: 20px; /* Espacio para el indicador del 50% */
+            padding-top: 20px;
         }
 
         .balance-label-50 {
@@ -192,22 +193,21 @@
         .balance-track {
             background-color: #0f172a;
             height: 26px;
-            border-radius: 0px; /* Barra cuadrada sin curvas */
+            border-radius: 0px;
             overflow: hidden;
             display: flex;
             position: relative;
             border: 2px solid #334155;
         }
 
-        /* Margen intermedio (Línea divisoria en el centro exacto) */
         .balance-track::after {
             content: '';
             position: absolute;
             left: 50%;
             top: 0;
-            width: 4px; /* Grosor del margen del medio */
+            width: 4px;
             height: 100%;
-            background-color: #ffffff; /* Color de la línea de división */
+            background-color: #ffffff;
             box-shadow: 0 0 5px rgba(255,255,255,0.8);
             transform: translateX(-50%);
             z-index: 2;
@@ -275,6 +275,45 @@
             margin-top: 2px;
         }
 
+        /* COMPONENTE: DESGLOSE CONSULADOS EN EL EXTERIOR */
+        .exterior-breakdown {
+            margin-top: 25px;
+            background-color: #0f172a;
+            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid #222d4f;
+        }
+
+        .ext-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        .ext-table th {
+            color: var(--text-muted);
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 8px;
+            border-bottom: 2px solid #222d4f;
+        }
+
+        .ext-table td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .badge-winner {
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.75rem;
+        }
+        .bg-adl { background-color: rgba(37, 99, 235, 0.2); color: #60a5fa; }
+        .bg-fn { background-color: rgba(118, 255, 3, 0.15); color: var(--color-frenova); }
+
         /* WIDGETS MÉTRICOS EN CUADRÍCULA lateral */
         .metrics-grid {
             display: grid;
@@ -291,6 +330,17 @@
             align-items: center;
         }
 
+        .m-label-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .m-sublabel {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
         .m-label {
             font-size: 0.8rem;
             color: var(--text-muted);
@@ -301,6 +351,7 @@
         .m-value {
             font-size: 1.25rem;
             font-weight: bold;
+            text-align: right;
         }
 
         /* BOLETINES E INFORMES OFICIALES */
@@ -354,60 +405,113 @@
     <div class="dashboard-grid">
         
         <!-- COLUMNA IZQUIERDA: CÓMPUTO PRESIDENCIAL -->
-        <div class="panel-card">
-            <div class="panel-header">
-                <h2>Escrutinio General Presidencial</h2>
-                <span style="font-size: 0.8rem; color: var(--accent-green); font-weight: bold;">PRIMER BOLETÍN</span>
-            </div>
+        <div>
+            <div class="panel-card">
+                <div class="panel-header">
+                    <h2>Escrutinio General Presidencial</h2>
+                    <span style="font-size: 0.8rem; color: var(--accent-green); font-weight: bold;">PRIMER BOLETÍN</span>
+                </div>
 
-            <!-- Selector de Ámbito Geográfico -->
-            <div class="filter-bar">
-                <button class="filter-btn active" id="btn-nac" onclick="cambiarAmbito('nacional')">Ámbito Nacional</button>
-                <button class="filter-btn" id="btn-ext" onclick="cambiarAmbito('exterior')">Ámbito Exterior (Consolidado)</button>
-            </div>
+                <!-- Selector de Ámbito Geográfico -->
+                <div class="filter-bar">
+                    <button class="filter-btn active" id="btn-nac" onclick="cambiarAmbito('nacional')">Ámbito Nacional</button>
+                    <button class="filter-btn" id="btn-ext" onclick="cambiarAmbito('exterior')">Ámbito Exterior (Consolidado)</button>
+                </div>
 
-            <!-- Estructura de la Nueva Barra Cuadrada con Margen del Medio y 50% -->
-            <div class="balance-container">
-                <div class="balance-label-50">50%</div>
-                <div class="balance-track">
+                <!-- Estructura de la Barra Cuadrada con Margen del Medio y 50% -->
+                <div class="balance-container">
+                    <div class="balance-label-50">50%</div>
+                    <div class="balance-track">
+                        <!-- ADL -->
+                        <div class="balance-fill" id="bar-adl" style="width: 52.10%; background-color: var(--color-adl);"></div>
+                        <!-- FRENOVA -->
+                        <div class="balance-fill" id="bar-frenova" style="width: 47.90%; background-color: var(--color-frenova);"></div>
+                    </div>
+                </div>
+
+                <!-- Desglose de Candidatos -->
+                <div class="vs-display">
+                    
                     <!-- ADL -->
-                    <div class="balance-fill" id="bar-adl" style="width: 52.10%; background-color: var(--color-adl);"></div>
+                    <div class="candidate-row adl">
+                        <div class="c-meta">
+                            <span class="c-party">Acción por la Democracia y Libertad</span>
+                            <span class="c-name">Sebastián Piñera</span>
+                        </div>
+                        <div class="c-stats">
+                            <span class="c-percentage" id="txt-pct-adl">52.10%</span>
+                            <div class="c-votes" id="txt-vts-adl">4,520,119 Votos</div>
+                        </div>
+                    </div>
+
                     <!-- FRENOVA -->
-                    <div class="balance-fill" id="bar-frenova" style="width: 47.90%; background-color: var(--color-frenova);"></div>
+                    <div class="candidate-row frenova">
+                        <div class="c-meta">
+                            <span class="c-party">Frente de Renovación Nacional</span>
+                            <span class="c-name">Carmen Polo</span>
+                        </div>
+                        <div class="c-stats">
+                            <span class="c-percentage" id="txt-pct-frenova">47.90%</span>
+                            <div class="c-votes" id="txt-vts-frenova">4,155,294 Votos</div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
-            <!-- Desglose de Candidatos -->
-            <div class="vs-display">
+            <!-- COMPONENTE NUEVO: DESGLOSE INTERACTIVO DEL VOTO EN EL EXTERIOR -->
+            <div class="panel-card" id="card-breakdown-exterior">
+                <div class="panel-header">
+                    <h2>Rendimiento Regional: Consulados en el Extranjero</h2>
+                    <span style="font-size: 0.75rem; color: var(--text-muted);">ESCRUTADO AL 100%</span>
+                </div>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0 0 15px 0;">Historial de migración de tendencias en centros consulares clave:</p>
                 
-                <!-- ADL -->
-                <div class="candidate-row adl">
-                    <div class="c-meta">
-                        <span class="c-party">Acción por la Democracia y Libertad</span>
-                        <span class="c-name">Sebastián Piñera</span>
-                    </div>
-                    <div class="c-stats">
-                        <span class="c-percentage" id="txt-pct-adl">52.10%</span>
-                        <div class="c-votes" id="txt-vts-adl">4,520,119 Votos</div>
-                    </div>
-                </div>
-
-                <!-- FRENOVA -->
-                <div class="candidate-row frenova">
-                    <div class="c-meta">
-                        <span class="c-party">Frente de Renovación Nacional</span>
-                        <span class="c-name">Carmen Polo</span>
-                    </div>
-                    <div class="c-stats">
-                        <span class="c-percentage" id="txt-pct-frenova">47.90%</span>
-                        <div class="c-votes" id="txt-vts-frenova">4,155,294 Votos</div>
-                    </div>
-                </div>
-
+                <table class="ext-table">
+                    <thead>
+                        <tr>
+                            <th>Circunscripción</th>
+                            <th>ADL %</th>
+                            <th>FRENOVA %</th>
+                            <th>Votos Totales</th>
+                            <th>Predominio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <strong><td>Europa y España</td></strong>
+                            <td>49.80%</td>
+                            <td>50.20%</td>
+                            <td>600,000</td>
+                            <td><span class="badge-winner bg-fn">FRENOVA +0.4%</span></td>
+                        </tr>
+                        <tr>
+                            <strong><td>América Latina (Consolidado)</td></strong>
+                            <td>38.10%</td>
+                            <td>61.90%</td>
+                            <td>900,000</td>
+                            <td><span class="badge-winner bg-fn">FRENOVA +23.8%</span></td>
+                        </tr>
+                        <tr>
+                            <strong><td>Norteamérica (EE.UU. / CAN)</td></strong>
+                            <td>52.30%</td>
+                            <td>47.70%</td>
+                            <td>600,000</td>
+                            <td><span class="badge-winner bg-adl">ADL +4.6%</span></td>
+                        </tr>
+                        <tr>
+                            <strong><td>Asia y Oceanía</td></strong>
+                            <td>35.40%</td>
+                            <td>64.60%</td>
+                            <td>92,245</td>
+                            <td><span class="badge-winner bg-fn">FRENOVA +29.2%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
-        <!-- COLUMNA DERECHA: ESTADÍSTICAS Y COMUNICADOS -->
+        <!-- COLUMNA DERECHA: ESTADÍSTICAS, CONTADORES Y COMUNICADOS -->
         <div class="metrics-grid">
             
             <!-- Panel de Fichas de Transmisión -->
@@ -417,14 +521,29 @@
                 </div>
                 
                 <div class="metrics-grid">
+                    <!-- CONTADOR DE MESAS REALES -->
                     <div class="metric-mini-card">
-                        <span class="m-label">Actas Procesadas</span>
+                        <div class="m-label-group">
+                            <span class="m-label">Actas Procesadas</span>
+                            <span class="m-sublabel" id="m-mesas-detalle">45,984 de 100,840 mesas</span>
+                        </div>
                         <span class="m-value" id="m-actas">45.62%</span>
                     </div>
+
+                    <!-- PRORECCIÓN DE VOTOS PENDIENTES -->
+                    <div class="metric-mini-card" style="border-left: 3px solid var(--accent-orange);">
+                        <div class="m-label-group">
+                            <span class="m-label" style="color: var(--accent-orange);">Por Escrutar</span>
+                            <span class="m-sublabel">Margen pendiente calculado</span>
+                        </div>
+                        <span class="m-value" style="color: var(--accent-orange);" id="m-pendientes">~5.4M Votos</span>
+                    </div>
+
                     <div class="metric-mini-card">
                         <span class="m-label">Participación</span>
                         <span class="m-value" id="m-part">66.18%</span>
                     </div>
+                    
                     <div class="metric-mini-card">
                         <span class="m-label">Votos Válidos</span>
                         <span class="m-value" id="m-validos">8,675,413</span>
@@ -444,7 +563,7 @@
                 </div>
 
                 <div class="bulletin-box" style="border-left-color: var(--color-adl);">
-                    <span class="bulletin-time">Hace 30 minutos (Auditoría)</span>
+                    <span class="bulletin-time">Hace 30 minutes (Auditoría)</span>
                     100% de las actas de mesas del voto exterior provenientes de los consulados en Europa y América Latina han sido ingresadas al sistema de cómputo.
                 </div>
             </div>
@@ -458,43 +577,11 @@
     </footer>
 
     <script>
-        // Datos simulados estructurados para cambiar al vuelo
+        // Datos simulados estructurados para cambiar al vuelo de forma coherente
         const baseDatosResultados = {
             nacional: {
                 adl_pct: "52.10%", adl_vts: "4,520,119 Votos", bar_adl: "52.10%",
                 frenova_pct: "47.90%", frenova_vts: "4,155,294 Votos", bar_frenova: "47.90%",
-                actas: "45.62%", participacion: "66.18%", validos: "8,675,413"
-            },
-            exterior: {
-                adl_pct: "41.50%", adl_vts: "909,781 Votos", bar_adl: "41.50%",
-                frenova_pct: "58.50%", frenova_vts: "1,282,464 Votos", bar_frenova: "58.50%",
-                actas: "100.00%", participacion: "62.63%", validos: "2,192,245"
-            }
-        };
-
-        function cambiarAmbito(ambito) {
-            if (ambito === 'nacional') {
-                document.getElementById('btn-nac').classList.add('active');
-                document.getElementById('btn-ext').classList.remove('active');
-            } else {
-                document.getElementById('btn-ext').classList.add('active');
-                document.getElementById('btn-nac').classList.remove('active');
-            }
-
-            const datos = baseDatosResultados[ambito];
-            
-            document.getElementById('txt-pct-adl').innerText = datos.adl_pct;
-            document.getElementById('txt-vts-adl').innerText = datos.adl_vts;
-            document.getElementById('bar-adl').style.width = datos.bar_adl;
-
-            document.getElementById('txt-pct-frenova').innerText = datos.frenova_pct;
-            document.getElementById('txt-vts-frenova').innerText = datos.frenova_vts;
-            document.getElementById('bar-frenova').style.width = datos.bar_frenova;
-
-            document.getElementById('m-actas').innerText = datos.actas;
-            document.getElementById('m-part').innerText = datos.participacion;
-            document.getElementById('m-validos').innerText = datos.validos;
-        }
-    </script>
-</body>
-</html>
+                actas: "45.62%", mesas_detalle: "45,984 de 100,840 mesas",
+                pendientes: "~5.4M Votos", participacion: "66.18%", validos: "8,675,413"
+         
