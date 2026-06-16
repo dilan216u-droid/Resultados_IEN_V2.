@@ -6,17 +6,16 @@
     <title>Divulgación de Resultados - Segunda Vuelta Celania 2026</title>
     <style>
         :root {
-            --bg-main: #0b132b;       /* Azul Cyber Profundo */
-            --bg-surface: #1c2541;    /* Azul Superficie de Tarjetas */
-            --bg-widgets: #222d4f;    /* Contenedores internos */
+            --bg-main: #0b132b;
+            --bg-surface: #1c2541;
+            --bg-widgets: #222d4f;
             --text-white: #ffffff;
             --text-muted: #8da9c4;
-            --accent-green: #00e676;  /* Éxito / Concluido */
-            --accent-orange: #f59e0b; /* Alerta / Pendiente */
+            --accent-green: #00e676;
+            --accent-orange: #f59e0b;
             
-            /* Colores Oficiales de los Finalistas */
-            --color-adl: #2563eb;      /* Azul Eléctrico ADL */
-            --color-frenova: #76ff03;  /* Verde Limón FRENOVA */
+            --color-adl: #2563eb;
+            --color-frenova: #76ff03;
         }
 
         body {
@@ -27,14 +26,12 @@
             padding: 0;
         }
 
-        /* BARRA SUPERIOR DE ADJUDICACIÓN RÁPIDA */
         .adjudication-ribbon {
             background: linear-gradient(90deg, var(--color-adl) 0%, #1e293b 50%, var(--color-frenova) 100%);
             height: 6px;
             width: 100%;
         }
 
-        /* TOP NAV INSTITUCIONAL */
         .nav-top {
             background-color: #070d1f;
             padding: 15px 20px;
@@ -63,18 +60,8 @@
             font-size: 0.75rem;
         }
 
-        .nav-title h1 {
-            margin: 0;
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .nav-title p {
-            margin: 2px 0 0 0;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
+        .nav-title h1 { margin: 0; font-size: 1.1rem; letter-spacing: 0.5px; text-transform: uppercase; }
+        .nav-title p { margin: 2px 0 0 0; font-size: 0.75rem; color: var(--text-muted); }
 
         .live-badge {
             background-color: rgba(239, 68, 68, 0.2);
@@ -97,13 +84,8 @@
             animation: pulse 1.8s infinite;
         }
 
-        @keyframes pulse {
-            0% { opacity: 0.3; }
-            50% { opacity: 1; }
-            100% { opacity: 0.3; }
-        }
+        @keyframes pulse { 0% { opacity: 0.3; } 50% { opacity: 1; } 100% { opacity: 0.3; } }
 
-        /* CONTENEDOR PRINCIPAL INTERFAZ EN WIDGETS */
         .dashboard-grid {
             max-width: 1200px;
             margin: 25px auto;
@@ -113,11 +95,8 @@
             gap: 20px;
         }
 
-        @media (max-width: 900px) {
-            .dashboard-grid { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 900px) { .dashboard-grid { grid-template-columns: 1fr; } }
 
-        /* TARJETAS COMPONENTES */
         .panel-card {
             background-color: var(--bg-surface);
             border-radius: 12px;
@@ -136,20 +115,9 @@
             padding-bottom: 10px;
         }
 
-        .panel-header h2 {
-            margin: 0;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-muted);
-        }
+        .panel-header h2 { margin: 0; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); }
 
-        /* CONTROLES DE FILTRO (Nacional vs Exterior) */
-        .filter-bar {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
+        .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; }
 
         .filter-btn {
             background-color: var(--bg-widgets);
@@ -163,230 +131,104 @@
             transition: all 0.2s;
         }
 
-        .filter-btn.active {
-            background-color: var(--color-adl);
-            color: white;
-            border-color: var(--color-adl);
-        }
+        .filter-btn.active { background-color: var(--color-adl); color: white; border-color: var(--color-adl); }
 
-        /* CONTENEDOR DE LA BARRA DE EQUILIBRIO RECTANGULAR */
-        .balance-container {
-            position: relative;
-            margin: 15px 0 35px 0;
-            padding-top: 20px;
-        }
-
+        .balance-container { position: relative; margin: 15px 0 35px 0; padding-top: 20px; }
         .balance-label-50 {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.8rem;
-            font-weight: bold;
-            color: var(--text-muted);
-            background-color: #0f172a;
-            padding: 2px 6px;
-            border: 1px solid #334155;
-            z-index: 5;
+            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            font-size: 0.8rem; font-weight: bold; color: var(--text-muted);
+            background-color: #0f172a; padding: 2px 6px; border: 1px solid #334155; z-index: 5;
         }
 
         .balance-track {
-            background-color: #0f172a;
-            height: 26px;
-            border-radius: 0px;
-            overflow: hidden;
-            display: flex;
-            position: relative;
-            border: 2px solid #334155;
+            background-color: #0f172a; height: 26px; overflow: hidden; display: flex; position: relative; border: 2px solid #334155;
         }
 
         .balance-track::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            width: 4px;
-            height: 100%;
-            background-color: #ffffff;
-            box-shadow: 0 0 5px rgba(255,255,255,0.8);
-            transform: translateX(-50%);
-            z-index: 2;
+            content: ''; position: absolute; left: 50%; top: 0; width: 4px; height: 100%;
+            background-color: #ffffff; box-shadow: 0 0 5px rgba(255,255,255,0.8); transform: translateX(-50%); z-index: 2;
         }
 
-        .balance-fill {
-            height: 100%;
-            transition: width 0.6s ease-in-out;
-        }
+        .balance-fill { height: 100%; transition: width 0.6s ease-in-out; }
 
-        /* SECCIÓN VERSUS HEAD-TO-HEAD */
-        .vs-display {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+        .vs-display { display: flex; flex-direction: column; gap: 15px; }
 
         .candidate-row {
-            background-color: var(--bg-widgets);
-            border-radius: 8px;
-            padding: 15px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-            border-left: 5px solid transparent;
+            background-color: var(--bg-widgets); border-radius: 8px; padding: 15px 20px;
+            display: flex; align-items: center; justify-content: space-between; border-left: 5px solid transparent;
         }
-
         .candidate-row.adl { border-left-color: var(--color-adl); }
         .candidate-row.frenova { border-left-color: var(--color-frenova); }
 
-        .c-meta {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .c-party {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            font-weight: bold;
-        }
-
-        .c-name {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-top: 2px;
-        }
-
-        .c-stats {
-            text-align: right;
-        }
-
-        .c-percentage {
-            font-size: 1.8rem;
-            font-weight: bold;
-        }
-
+        .c-meta { display: flex; flex-direction: column; }
+        .c-party { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: bold; }
+        .c-name { font-size: 1.3rem; font-weight: bold; margin-top: 2px; }
+        .c-stats { text-align: right; }
+        .c-percentage { font-size: 1.8rem; font-weight: bold; }
         .adl .c-percentage { color: #60a5fa; }
         .frenova .c-percentage { color: var(--color-frenova); }
+        .c-votes { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
 
-        .c-votes {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 2px;
+        /* CONTENEDOR DE BOTONES DE REGIONES (Módulos Cuadrados) */
+        .regions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 15px;
         }
 
-        /* COMPONENTE: DESGLOSE CONSULADOS EN EL EXTERIOR */
-        .exterior-breakdown {
-            margin-top: 25px;
-            background-color: #0f172a;
-            border-radius: 8px;
+        .region-card-btn {
+            background-color: var(--bg-widgets);
+            border: 1px solid #3a476d;
             padding: 15px;
-            border: 1px solid #222d4f;
+            text-align: center;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
         }
+        .region-card-btn:hover { background-color: #2e3d6b; border-color: #4f5e8d; }
+        .region-card-btn.active { border: 2px solid var(--accent-green); background-color: #1e294b; }
+        .region-card-btn h3 { margin: 0; font-size: 0.95rem; text-transform: uppercase; }
+        .region-card-btn p { margin: 5px 0 0 0; font-size: 0.75rem; color: var(--text-muted); }
 
-        .ext-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.85rem;
-            text-align: left;
-            margin-top: 10px;
-        }
+        /* SECCIONES DINÁMICAS DE REGIONES */
+        .region-data-panel { display: none; margin-top: 20px; padding: 15px; background-color: #0f172a; border-radius: 8px; border: 1px solid #222d4f; }
+        
+        .ext-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left; margin-top: 10px; }
+        .ext-table th { color: var(--text-muted); font-weight: bold; text-transform: uppercase; padding: 8px; border-bottom: 2px solid #222d4f; }
+        .ext-table td { padding: 10px 8px; border-bottom: 1px solid #1e293b; }
 
-        .ext-table th {
-            color: var(--text-muted);
-            font-weight: bold;
-            text-transform: uppercase;
-            padding: 8px;
-            border-bottom: 2px solid #222d4f;
-        }
-
-        .ext-table td {
-            padding: 10px 8px;
-            border-bottom: 1px solid #1e293b;
-        }
-
-        .badge-winner {
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 0.75rem;
-        }
+        .badge-winner { padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 0.75rem; }
         .bg-adl { background-color: rgba(37, 99, 235, 0.2); color: #60a5fa; }
         .bg-fn { background-color: rgba(118, 255, 3, 0.15); color: var(--color-frenova); }
 
-        /* WIDGETS MÉTRICOS EN CUADRÍCULA lateral */
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
+        /* Desplegable de países */
+        .countries-dropdown-container { margin-top: 15px; }
+        .dropdown-trigger {
+            background-color: #1e293b; color: var(--text-white); width: 100%; text-align: left;
+            padding: 10px; border: 1px solid #334155; border-radius: 4px; cursor: pointer;
+            font-weight: bold; font-size: 0.8rem; display: flex; justify-content: space-between;
         }
+        .dropdown-content { display: none; padding: 10px 0; }
 
-        .metric-mini-card {
-            background-color: var(--bg-widgets);
-            border-radius: 8px;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        /* CUADRÍCULA LATERAL */
+        .metrics-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+        .metric-mini-card { background-color: var(--bg-widgets); border-radius: 8px; padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .m-label-group { display: flex; flex-direction: column; }
+        .m-sublabel { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+        .m-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: bold; }
+        .m-value { font-size: 1.25rem; font-weight: bold; text-align: right; }
 
-        .m-label-group {
-            display: flex;
-            flex-direction: column;
-        }
+        .bulletin-box { background-color: #0f172a; border-radius: 8px; padding: 12px; border-left: 3px solid var(--accent-green); font-size: 0.8rem; line-height: 1.5; margin-bottom: 10px; }
+        .bulletin-time { color: var(--text-muted); font-weight: bold; display: block; margin-bottom: 4px; }
 
-        .m-sublabel {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 2px;
-        }
-
-        .m-label {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        .m-value {
-            font-size: 1.25rem;
-            font-weight: bold;
-            text-align: right;
-        }
-
-        /* BOLETINES E INFORMES OFICIALES */
-        .bulletin-box {
-            background-color: #0f172a;
-            border-radius: 8px;
-            padding: 12px;
-            border-left: 3px solid var(--accent-green);
-            font-size: 0.8rem;
-            line-height: 1.5;
-            margin-bottom: 10px;
-        }
-
-        .bulletin-time {
-            color: var(--text-muted);
-            font-weight: bold;
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            border-top: 1px solid #222d4f;
-            margin-top: 50px;
-        }
+        footer { text-align: center; padding: 40px; font-size: 0.75rem; color: var(--text-muted); border-top: 1px solid #222d4f; margin-top: 50px; }
     </style>
 </head>
 <body>
 
     <div class="adjudication-ribbon"></div>
 
-    <!-- Encabezado de Transmisión Real con el IEN -->
     <div class="nav-top">
         <div class="nav-logo-area">
             <div class="seal-placeholder">IEN</div>
@@ -401,10 +243,9 @@
         </div>
     </div>
 
-    <!-- Grid Principal de la Interfaz -->
     <div class="dashboard-grid">
         
-        <!-- COLUMNA IZQUIERDA: CÓMPUTO PRESIDENCIAL -->
+        <!-- COLUMNA IZQUIERDA -->
         <div>
             <div class="panel-card">
                 <div class="panel-header">
@@ -412,27 +253,20 @@
                     <span style="font-size: 0.8rem; color: var(--accent-green); font-weight: bold;">PRIMER BOLETÍN</span>
                 </div>
 
-                <!-- Selector de Ámbito Geográfico -->
                 <div class="filter-bar">
                     <button class="filter-btn active" id="btn-nac" onclick="cambiarAmbito('nacional')">Ámbito Nacional</button>
                     <button class="filter-btn" id="btn-ext" onclick="cambiarAmbito('exterior')">Ámbito Exterior (Consolidado)</button>
                 </div>
 
-                <!-- Estructura de la Barra Cuadrada con Margen del Medio y 50% -->
                 <div class="balance-container">
                     <div class="balance-label-50">50%</div>
                     <div class="balance-track">
-                        <!-- ADL -->
                         <div class="balance-fill" id="bar-adl" style="width: 52.10%; background-color: var(--color-adl);"></div>
-                        <!-- FRENOVA -->
                         <div class="balance-fill" id="bar-frenova" style="width: 47.90%; background-color: var(--color-frenova);"></div>
                     </div>
                 </div>
 
-                <!-- Desglose de Candidatos -->
                 <div class="vs-display">
-                    
-                    <!-- ADL -->
                     <div class="candidate-row adl">
                         <div class="c-meta">
                             <span class="c-party">Acción por la Democracia y Libertad</span>
@@ -444,7 +278,6 @@
                         </div>
                     </div>
 
-                    <!-- FRENOVA -->
                     <div class="candidate-row frenova">
                         <div class="c-meta">
                             <span class="c-party">Frente de Renovación Nacional</span>
@@ -455,73 +288,143 @@
                             <div class="c-votes" id="txt-vts-frenova">4,155,294 Votos</div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
-            <!-- COMPONENTE NUEVO: DESGLOSE INTERACTIVO DEL VOTO EN EL EXTERIOR -->
-            <div class="panel-card" id="card-breakdown-exterior">
+            <!-- SECCIÓN DEL VOTO EN EL EXTERIOR (Oculta al inicio, controlada por JS) -->
+            <div class="panel-card" id="panel-voto-exterior" style="display: none;">
                 <div class="panel-header">
-                    <h2>Rendimiento Regional: Consulados en el Extranjero</h2>
-                    <span style="font-size: 0.75rem; color: var(--text-muted);">ESCRUTADO AL 100%</span>
+                    <h2>Monitoreo Geopolítico Extranjero</h2>
+                    <span style="font-size: 0.75rem; color: var(--accent-green); font-weight: bold;">100% ESCUTADO</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0 0 15px 0;">Historial de migración de tendencias en centros consulares clave:</p>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0 0 15px 0;">Seleccione una región del mundo para auditar los flujos de sufragio consolidados y por país:</p>
                 
-                <table class="ext-table">
-                    <thead>
-                        <tr>
-                            <th>Circunscripción</th>
-                            <th>ADL %</th>
-                            <th>FRENOVA %</th>
-                            <th>Votos Totales</th>
-                            <th>Predominio</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <strong><td>Europa y España</td></strong>
-                            <td>49.80%</td>
-                            <td>50.20%</td>
-                            <td>600,000</td>
-                            <td><span class="badge-winner bg-fn">FRENOVA +0.4%</span></td>
-                        </tr>
-                        <tr>
-                            <strong><td>América Latina (Consolidado)</td></strong>
-                            <td>38.10%</td>
-                            <td>61.90%</td>
-                            <td>900,000</td>
-                            <td><span class="badge-winner bg-fn">FRENOVA +23.8%</span></td>
-                        </tr>
-                        <tr>
-                            <strong><td>Norteamérica (EE.UU. / CAN)</td></strong>
-                            <td>52.30%</td>
-                            <td>47.70%</td>
-                            <td>600,000</td>
-                            <td><span class="badge-winner bg-adl">ADL +4.6%</span></td>
-                        </tr>
-                        <tr>
-                            <strong><td>Asia y Oceanía</td></strong>
-                            <td>35.40%</td>
-                            <td>64.60%</td>
-                            <td>92,245</td>
-                            <td><span class="badge-winner bg-fn">FRENOVA +29.2%</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <!-- Cuadrados de Selección de Regiones -->
+                <div class="regions-grid">
+                    <div class="region-card-btn" id="reg-btn-america" onclick="verRegion('america')">
+                        <h3>América</h3>
+                        <p>Predominio FRENOVA</p>
+                    </div>
+                    <div class="region-card-btn" id="reg-btn-europa" onclick="verRegion('europa')">
+                        <h3>Europa</h3>
+                        <p>Margen Estrecho</p>
+                    </div>
+                    <div class="region-card-btn" id="reg-btn-asia" onclick="verRegion('asia')">
+                        <h3>Asia / Oceanía</h3>
+                        <p>Tendencia FN</p>
+                    </div>
+                </div>
+
+                <!-- SUBPANEL: AMÉRICA -->
+                <div class="region-data-panel" id="panel-reg-america">
+                    <h3 style="margin: 0 0 10px 0; font-size: 1rem; color: #60a5fa;">Consolidado Regional: Continente Americano</h3>
+                    <table class="ext-table">
+                        <thead>
+                            <tr>
+                                <th>Área</th>
+                                <th>ADL %</th>
+                                <th>FRENOVA %</th>
+                                <th>Total Votos</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Toda América (LATAM + EE.UU.)</strong></td>
+                                <td>46.60%</td>
+                                <td>53.40%</td>
+                                <td>1,500,000</td>
+                                <td><span class="badge-winner bg-fn">FRENOVA +6.8%</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Desplegable País por País de América -->
+                    <div class="countries-dropdown-container">
+                        <button class="dropdown-trigger" onclick="toggleDropdown('drop-america')">
+                            <span>➔ Ver resultados detallados por País de América</span>
+                            <span>▼</span>
+                        </button>
+                        <div class="dropdown-content" id="drop-america">
+                            <table class="ext-table" style="background-color: #070d1f;">
+                                <thead>
+                                    <tr>
+                                        <th>País / Consulado</th>
+                                        <th>ADL %</th>
+                                        <th>FRENOVA %</th>
+                                        <th>Votos</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Estados Unidos / Miami</td><td>54.20%</td><td>45.80%</td><td>400,000</td></tr>
+                                    <tr><td>Argentina / Buenos Aires</td><td>32.50%</td><td>67.50%</td><td>350,000</td></tr>
+                                    <tr><td>Chile / Santiago</td><td>39.10%</td><td>60.90%</td><td>300,000</td></tr>
+                                    <tr><td>México / CDMX</td><td>41.80%</td><td>58.20%</td><td>250,000</td></tr>
+                                    <tr><td>Venezuela / Caracas</td><td>56.00%</td><td>44.00%</td><td>200,000</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUBPANEL: EUROPA -->
+                <div class="region-data-panel" id="panel-reg-europa">
+                    <h3 style="margin: 0 0 10px 0; font-size: 1rem; color: #60a5fa;">Consolidado Regional: Europa Occidental y España</h3>
+                    <table class="ext-table">
+                        <thead>
+                            <tr>
+                                <th>Área</th>
+                                <th>ADL %</th>
+                                <th>FRENOVA %</th>
+                                <th>Total Votos</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Unión Europea (Total Consolidado)</strong></td>
+                                <td>49.80%</td>
+                                <td>50.20%</td>
+                                <td>600,000</td>
+                                <td><span class="badge-winner bg-fn">FRENOVA +0.4%</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- SUBPANEL: ASIA -->
+                <div class="region-data-panel" id="panel-reg-asia">
+                    <h3 style="margin: 0 0 10px 0; font-size: 1rem; color: #60a5fa;">Consolidado Regional: Asia, África y Oceanía</h3>
+                    <table class="ext-table">
+                        <thead>
+                            <tr>
+                                <th>Área</th>
+                                <th>ADL %</th>
+                                <th>FRENOVA %</th>
+                                <th>Total Votos</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Resto del Mundo Consolidado</strong></td>
+                                <td>35.40%</td>
+                                <td>64.60%</td>
+                                <td>92,245</td>
+                                <td><span class="badge-winner bg-fn">FRENOVA +29.2%</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
 
-        <!-- COLUMNA DERECHA: ESTADÍSTICAS, CONTADORES Y COMUNICADOS -->
+        <!-- COLUMNA DERECHA -->
         <div class="metrics-grid">
-            
-            <!-- Panel de Fichas de Transmisión -->
             <div class="panel-card">
-                <div class="panel-header">
-                    <h2>Métricas de Transmisión</h2>
-                </div>
-                
+                <div class="panel-header"><h2>Métricas de Transmisión</h2></div>
                 <div class="metrics-grid">
-                    <!-- CONTADOR DE MESAS REALES -->
                     <div class="metric-mini-card">
                         <div class="m-label-group">
                             <span class="m-label">Actas Procesadas</span>
@@ -530,58 +433,9 @@
                         <span class="m-value" id="m-actas">45.62%</span>
                     </div>
 
-                    <!-- PRORECCIÓN DE VOTOS PENDIENTES -->
                     <div class="metric-mini-card" style="border-left: 3px solid var(--accent-orange);">
                         <div class="m-label-group">
                             <span class="m-label" style="color: var(--accent-orange);">Por Escrutar</span>
                             <span class="m-sublabel">Margen pendiente calculado</span>
                         </div>
-                        <span class="m-value" style="color: var(--accent-orange);" id="m-pendientes">~5.4M Votos</span>
-                    </div>
-
-                    <div class="metric-mini-card">
-                        <span class="m-label">Participación</span>
-                        <span class="m-value" id="m-part">66.18%</span>
-                    </div>
-                    
-                    <div class="metric-mini-card">
-                        <span class="m-label">Votos Válidos</span>
-                        <span class="m-value" id="m-validos">8,675,413</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Panel de Mensajes de la Autoridad Electoral -->
-            <div class="panel-card">
-                <div class="panel-header">
-                    <h2>Boletines Oficiales</h2>
-                </div>
-                
-                <div class="bulletin-box">
-                    <span class="bulletin-time">Hace 5 minutos (IEN)</span>
-                    Se emite el Primer Boletín Informativo con una tendencia estable en el escrutinio de la segunda vuelta. El sistema central del IEN avanza sin reportar incidencias críticas.
-                </div>
-
-                <div class="bulletin-box" style="border-left-color: var(--color-adl);">
-                    <span class="bulletin-time">Hace 30 minutes (Auditoría)</span>
-                    100% de las actas de mesas del voto exterior provenientes de los consulados en Europa y América Latina han sido ingresadas al sistema de cómputo.
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-    <footer>
-        Instituto Electoral Nacional de la República de Celania • Sala de Prensa y Difusión de Resultados 2026
-    </footer>
-
-    <script>
-        // Datos simulados estructurados para cambiar al vuelo de forma coherente
-        const baseDatosResultados = {
-            nacional: {
-                adl_pct: "52.10%", adl_vts: "4,520,119 Votos", bar_adl: "52.10%",
-                frenova_pct: "47.90%", frenova_vts: "4,155,294 Votos", bar_frenova: "47.90%",
-                actas: "45.62%", mesas_detalle: "45,984 de 100,840 mesas",
-                pendientes: "~5.4M Votos", participacion: "66.18%", validos: "8,675,413"
-         
+                        
